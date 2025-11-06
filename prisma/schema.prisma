@@ -1,0 +1,202 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Session {
+  session_id String @id @map("session_id") @db.VarChar(128)
+  expires    Int    @db.UnsignedInt
+  data       String @db.Text
+
+  @@map("sessions")
+}
+
+model Role {
+  id        Int    @id @default(autoincrement())
+  role_name String @db.VarChar(50)
+
+  users User[]
+}
+
+model User {
+  id         Int      @id @default(autoincrement())
+  name       String   @db.VarChar(120)
+  email      String   @unique @db.VarChar(255)
+  password   String   @db.VarChar(255)
+  role_id    Int
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  role Role @relation(fields: [role_id], references: [id])
+}
+
+model EventEdition {
+  id                Int      @id @default(autoincrement())
+  year              Int
+  submissions_start DateTime
+  submissions_end   DateTime
+  votes_start       DateTime
+  votes_end         DateTime
+
+  users_in_event UsersInEvent[]
+  awards         Award[]
+}
+
+model UsersInEvent {
+  id               Int      @id @default(autoincrement())
+  event_edition_id Int
+  user_name        String   @db.VarChar(120)
+  user_email       String   @db.VarChar(255)
+  user_sait_id     String?  @db.VarChar(64)
+  user_permission  String   @db.VarChar(20)
+  created_at       DateTime @default(now())
+
+  edition            EventEdition       @relation(fields: [event_edition_id], references: [id])
+  nominees           Nominee[]
+  nominations_made   Nominee[]          @relation("NomineeNominator")
+  submission_members SubmissionMember[]
+  nominees_votes     NomineeVote[]
+  submissions_votes  SubmissionVote[]
+
+  submissions          Submission[]     @relation("SubmissionOwner")
+  uploaded_files       SubmissionFile[] @relation("SubmissionFileUploader")
+  reviewed_submissions Submission[]     @relation("SubmissionReviewer")
+
+  @@unique([event_edition_id, user_email], name: "uq_users_in_event_email")
+  @@unique([event_edition_id, user_sait_id], name: "uq_users_in_event_sait")
+  @@index([event_edition_id], name: "idx_uie_event")
+}
+
+model Award {
+  id               Int    @id @default(autoincrement())
+  event_edition_id Int
+  category_name    String @db.VarChar(120)
+  award_name       String @db.VarChar(120)
+
+  edition     EventEdition @relation(fields: [event_edition_id], references: [id])
+  nominees    Nominee[]
+  submissions Submission[]
+
+  @@index([event_edition_id], name: "idx_awards_event")
+  @@unique([event_edition_id, category_name, award_name], name: "uq_awards_category_award_per_edition")
+}
+
+model Nominee {
+  id                         Int      @id @default(autoincrement())
+  user_in_event_id           Int
+  award_id                   Int
+  nominator_user_in_event_id Int
+  created_at                 DateTime @default(now())
+
+  user_in_event UsersInEvent @relation(fields: [user_in_event_id], references: [id])
+  award         Award        @relation(fields: [award_id], references: [id])
+  nominator     UsersInEvent @relation("NomineeNominator", fields: [nominator_user_in_event_id], references: [id])
+
+  votes NomineeVote[]
+
+  @@index([award_id], name: "idx_nominees_award")
+  @@index([user_in_event_id], name: "idx_nominees_user")
+  @@index([nominator_user_in_event_id], name: "idx_nominees_nominator")
+}
+
+model Submission {
+  id                  Int       @id @default(autoincrement())
+  award_id            Int
+  user_in_event_id    Int
+  is_group_submission Boolean   @default(false)
+  contact_name        String    @db.VarChar(120)
+  contact_email       String    @db.VarChar(255)
+  project_title       String    @db.VarChar(200)
+  project_description String
+  project_cover_image String?   @db.VarChar(500)
+  project_url         String?   @db.VarChar(500)
+  status              String    @db.VarChar(20)
+  reviewed_by_user_id Int?
+  reviewed_at         DateTime?
+  review_note         String?   @db.VarChar(500)
+  winner              Boolean   @default(false)
+  submission_date     DateTime  @default(now())
+
+  award Award @relation(fields: [award_id], references: [id])
+
+  owner    UsersInEvent  @relation(name: "SubmissionOwner", fields: [user_in_event_id], references: [id], map: "fk_submission_owner")
+  reviewer UsersInEvent? @relation(name: "SubmissionReviewer", fields: [reviewed_by_user_id], references: [id], map: "fk_submission_reviewer")
+
+  members SubmissionMember[]
+  files   SubmissionFile[]
+  votes   SubmissionVote[]
+
+  @@index([award_id, status], name: "idx_sub_award_status")
+  @@index([user_in_event_id], name: "idx_sub_owner")
+  @@index([award_id], name: "idx_sub_award")
+  @@index([reviewed_by_user_id], name: "idx_sub_reviewer")
+}
+
+model SubmissionMember {
+  id               Int @id @default(autoincrement())
+  submission_id    Int
+  user_in_event_id Int
+
+  submission    Submission   @relation(fields: [submission_id], references: [id])
+  user_in_event UsersInEvent @relation(fields: [user_in_event_id], references: [id])
+
+  @@unique([submission_id, user_in_event_id], name: "uq_submission_member")
+  @@index([submission_id], name: "idx_sm_sub")
+  @@index([user_in_event_id], name: "idx_sm_uie")
+}
+
+model SubmissionFile {
+  id                           Int    @id @default(autoincrement())
+  submission_id                Int
+  storage_key                  String @db.VarChar(500)
+  original_name                String @db.VarChar(255)
+  mime_type                    String @db.VarChar(150)
+  size_bytes                   Int
+  uploaded_by_user_in_event_id Int
+
+  submission Submission   @relation(fields: [submission_id], references: [id])
+  uploader   UsersInEvent @relation(name: "SubmissionFileUploader", fields: [uploaded_by_user_in_event_id], references: [id], map: "fk_sf_uploader")
+
+  @@index([submission_id], name: "idx_sf_submission")
+  @@index([uploaded_by_user_in_event_id], name: "idx_sf_uploader")
+}
+
+model NomineeVote {
+  id                     BigInt   @id @default(autoincrement())
+  nominee_id             Int
+  voter_user_in_event_id Int
+  vote_date              DateTime @default(now())
+
+  nominee Nominee      @relation(fields: [nominee_id], references: [id])
+  voter   UsersInEvent @relation(fields: [voter_user_in_event_id], references: [id])
+
+  @@unique([nominee_id, voter_user_in_event_id], name: "uq_nominee_vote")
+  @@index([nominee_id], name: "idx_nv_nominee")
+  @@index([voter_user_in_event_id], name: "idx_nv_voter")
+}
+
+model SubmissionVote {
+  id                     BigInt   @id @default(autoincrement())
+  submission_id          Int
+  voter_user_in_event_id Int
+  vote_date              DateTime @default(now())
+
+  submission Submission   @relation(fields: [submission_id], references: [id])
+  voter      UsersInEvent @relation(fields: [voter_user_in_event_id], references: [id])
+
+  @@unique([submission_id, voter_user_in_event_id], name: "uq_submission_vote")
+  @@index([submission_id], name: "idx_sv_submission")
+  @@index([voter_user_in_event_id], name: "idx_sv_voter")
+}
+
+model DataMigration {
+  id         Int      @id @default(autoincrement())
+  key        String   @unique @db.VarChar(191)
+  applied_at DateTime @default(now())
+
+  @@map("_data_migrations")
+}

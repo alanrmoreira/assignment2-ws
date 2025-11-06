@@ -1,0 +1,387 @@
+[
+  {
+    "_id": 1,
+    "name": "Mozzarella",
+    "description": "Shredded mozzarella cheese",
+    "cost": 1.25,
+    "inventory": {
+      "quantityStock": 50,
+      "lastUpdate": "2025-07-10T10:00:00Z"
+    },
+    "dietaryInfo": [
+      {
+        "restrictionId": 2,
+        "restrictionName": "Vegan",
+        "containsRestriction": true,
+        "notes": "Mozzarella contains dairy, conflicts with vegan restriction"
+      },
+      {
+        "restrictionId": 4,
+        "restrictionName": "Dairy-Free",
+        "containsRestriction": true,
+        "notes": "Mozzarella contains dairy, conflicts with dairy-free restriction"
+      }
+    ]
+  },
+  {
+    "_id": 2,
+    "name": "Tomato Sauce",
+    "description": "Fresh tomato pizza sauce",
+    "cost": 0.85,
+    "inventory": {
+      "quantityStock": 40,
+      "lastUpdate": "2025-07-10T10:00:00Z"
+    },
+    "dietaryInfo": []
+  },
+  {
+    "_id": 3,
+    "name": "Pepperoni",
+    "description": "Spicy pepperoni slices",
+    "cost": 1.45,
+    "inventory": {
+      "quantityStock": 35,
+      "lastUpdate": "2025-07-10T10:00:00Z"
+    },
+    "dietaryInfo": [
+      {
+        "restrictionId": 1,
+        "restrictionName": "Vegetarian",
+        "containsRestriction": true,
+        "notes": "Pepperoni is meat, conflicts with vegetarian restriction"
+      },
+      {
+        "restrictionId": 2,
+        "restrictionName": "Vegan",
+        "containsRestriction": true,
+        "notes": "Pepperoni is meat, conflicts with vegan restriction"
+      }
+    ]
+  },
+  {
+    "_id": 4,
+    "name": "Ham",
+    "description": "Sliced smoked ham",
+    "cost": 1.35,
+    "inventory": {
+      "quantityStock": 25,
+      "lastUpdate": "2025-07-10T10:00:00Z"
+    },
+    "dietaryInfo": [
+      {
+        "restrictionId": 1,
+        "restrictionName": "Vegetarian",
+        "containsRestriction": true,
+        "notes": "Ham is meat, conflicts with vegetarian restriction"
+      },
+      {
+        "restrictionId": 2,
+        "restrictionName": "Vegan",
+        "containsRestriction": true,
+        "notes": "Ham is meat, conflicts with vegan restriction"
+      }
+    ]
+  },
+  {
+    "_id": 5,
+    "name": "Pineapple",
+    "description": "Canned pineapple chunks",
+    "cost": 0.90,
+    "inventory": {
+      "quantityStock": 20,
+      "lastUpdate": "2025-07-10T10:00:00Z"
+    },
+    "dietaryInfo": []
+  },
+  {
+    "_id": 6,
+    "name": "Mushrooms",
+    "description": "Fresh sliced mushrooms",
+    "cost": 1.00,
+    "inventory": {
+      "quantityStock": 15,
+      "lastUpdate": "2025-07-10T10:00:00Z"
+    },
+    "dietaryInfo": []
+  },
+  {
+    "_id": 7,
+    "name": "Green Peppers",
+    "description": "Chopped green bell peppers",
+    "cost": 0.75,
+    "inventory": {
+      "quantityStock": 30,
+      "lastUpdate": "2025-07-10T10:00:00Z"
+    },
+    "dietaryInfo": []
+  },
+  {
+    "_id": 8,
+    "name": "Onions",
+    "description": "Sliced red onions",
+    "cost": 0.60,
+    "inventory": {
+      "quantityStock": 40,
+      "lastUpdate": "2025-07-10T10:00:00Z"
+    },
+    "dietaryInfo": []
+  },
+  {
+    "_id": 9,
+    "name": "Chicken",
+    "description": "Grilled chicken strips",
+    "cost": 1.75,
+    "inventory": {
+      "quantityStock": 18,
+      "lastUpdate": "2025-07-10T10:00:00Z"
+    },
+    "dietaryInfo": [
+      {
+        "restrictionId": 1,
+        "restrictionName": "Vegetarian",
+        "containsRestriction": true,
+        "notes": "Chicken is meat, conflicts with vegetarian restriction"
+      },
+      {
+        "restrictionId": 2,
+        "restrictionName": "Vegan",
+        "containsRestriction": true,
+        "notes": "Chicken is meat, conflicts with vegan restriction"
+      }
+    ]
+  },
+  {
+    "_id": 10,
+    "name": "BBQ Sauce",
+    "description": "Smoky barbecue sauce",
+    "cost": 0.95,
+    "inventory": {
+      "quantityStock": 10,
+      "lastUpdate": "2025-07-10T10:00:00Z"
+    },
+    "dietaryInfo": []
+  },
+  {
+    "_id": 11,
+    "name": "Basil",
+    "description": "Fresh basil leaves",
+    "cost": 0.50,
+    "inventory": {
+      "quantityStock": 25,
+      "lastUpdate": "2025-07-10T10:00:00Z"
+    },
+    "dietaryInfo": []
+  },
+  {
+    "_id": 12,
+    "name": "Olives",
+    "description": "Black olives",
+    "cost": 0.80,
+    "inventory": {
+      "quantityStock": 20,
+      "lastUpdate": "2025-07-10T10:00:00Z"
+    },
+    "dietaryInfo": []
+  },
+  {
+    "_id": 13,
+    "name": "Sausage",
+    "description": "Italian sausage",
+    "cost": 1.55,
+    "inventory": {
+      "quantityStock": 22,
+      "lastUpdate": "2025-07-10T10:00:00Z"
+    },
+    "dietaryInfo": [
+      {
+        "restrictionId": 1,
+        "restrictionName": "Vegetarian",
+        "containsRestriction": true,
+        "notes": "Sausage is meat, conflicts with vegetarian restriction"
+      },
+      {
+        "restrictionId": 2,
+        "restrictionName": "Vegan",
+        "containsRestriction": true,
+        "notes": "Sausage is meat, conflicts with vegan restriction"
+      }
+    ]
+  },
+  {
+    "_id": 14,
+    "name": "Bacon",
+    "description": "Crispy bacon bits",
+    "cost": 1.65,
+    "inventory": {
+      "quantityStock": 18,
+      "lastUpdate": "2025-07-10T10:00:00Z"
+    },
+    "dietaryInfo": [
+      {
+        "restrictionId": 1,
+        "restrictionName": "Vegetarian",
+        "containsRestriction": true,
+        "notes": "Bacon is meat, conflicts with vegetarian restriction"
+      },
+      {
+        "restrictionId": 2,
+        "restrictionName": "Vegan",
+        "containsRestriction": true,
+        "notes": "Bacon is meat, conflicts with vegan restriction"
+      }
+    ]
+  },
+  {
+    "_id": 15,
+    "name": "Cheddar",
+    "description": "Aged cheddar cheese",
+    "cost": 1.30,
+    "inventory": {
+      "quantityStock": 30,
+      "lastUpdate": "2025-07-10T10:00:00Z"
+    },
+    "dietaryInfo": [
+      {
+        "restrictionId": 2,
+        "restrictionName": "Vegan",
+        "containsRestriction": true,
+        "notes": "Cheddar contains dairy, conflicts with vegan restriction"
+      },
+      {
+        "restrictionId": 4,
+        "restrictionName": "Dairy-Free",
+        "containsRestriction": true,
+        "notes": "Cheddar contains dairy, conflicts with dairy-free restriction"
+      }
+    ]
+  },
+  {
+    "_id": 16,
+    "name": "Parmesan",
+    "description": "Grated parmesan cheese",
+    "cost": 1.40,
+    "inventory": {
+      "quantityStock": 35,
+      "lastUpdate": "2025-07-10T10:00:00Z"
+    },
+    "dietaryInfo": [
+      {
+        "restrictionId": 2,
+        "restrictionName": "Vegan",
+        "containsRestriction": true,
+        "notes": "Parmesan contains dairy, conflicts with vegan restriction"
+      },
+      {
+        "restrictionId": 4,
+        "restrictionName": "Dairy-Free",
+        "containsRestriction": true,
+        "notes": "Parmesan contains dairy, conflicts with dairy-free restriction"
+      }
+    ]
+  },
+  {
+    "_id": 17,
+    "name": "Gorgonzola",
+    "description": "Crumbled gorgonzola cheese",
+    "cost": 1.80,
+    "inventory": {
+      "quantityStock": 12,
+      "lastUpdate": "2025-07-10T10:00:00Z"
+    },
+    "dietaryInfo": [
+      {
+        "restrictionId": 2,
+        "restrictionName": "Vegan",
+        "containsRestriction": true,
+        "notes": "Gorgonzola contains dairy, conflicts with vegan restriction"
+      },
+      {
+        "restrictionId": 4,
+        "restrictionName": "Dairy-Free",
+        "containsRestriction": true,
+        "notes": "Gorgonzola contains dairy, conflicts with dairy-free restriction"
+      }
+    ]
+  },
+  {
+    "_id": 18,
+    "name": "Spinach",
+    "description": "Fresh spinach leaves",
+    "cost": 0.70,
+    "inventory": {
+      "quantityStock": 28,
+      "lastUpdate": "2025-07-10T10:00:00Z"
+    },
+    "dietaryInfo": []
+  },
+  {
+    "_id": 19,
+    "name": "Alfredo Sauce",
+    "description": "Creamy alfredo sauce",
+    "cost": 1.10,
+    "inventory": {
+      "quantityStock": 15,
+      "lastUpdate": "2025-07-10T10:00:00Z"
+    },
+    "dietaryInfo": [
+      {
+        "restrictionId": 2,
+        "restrictionName": "Vegan",
+        "containsRestriction": true,
+        "notes": "Alfredo sauce contains dairy, conflicts with vegan restriction"
+      },
+      {
+        "restrictionId": 4,
+        "restrictionName": "Dairy-Free",
+        "containsRestriction": true,
+        "notes": "Alfredo sauce contains dairy, conflicts with dairy-free restriction"
+      }
+    ]
+  },
+  {
+    "_id": 20,
+    "name": "Buffalo Sauce",
+    "description": "Spicy buffalo sauce",
+    "cost": 0.90,
+    "inventory": {
+      "quantityStock": 20,
+      "lastUpdate": "2025-07-10T10:00:00Z"
+    },
+    "dietaryInfo": []
+  },
+  {
+    "_id": 21,
+    "name": "Feta",
+    "description": "Crumbled feta cheese",
+    "cost": 1.60,
+    "inventory": {
+      "quantityStock": 18,
+      "lastUpdate": "2025-07-10T10:00:00Z"
+    },
+    "dietaryInfo": [
+      {
+        "restrictionId": 2,
+        "restrictionName": "Vegan",
+        "containsRestriction": true,
+        "notes": "Feta contains dairy, conflicts with vegan restriction"
+      },
+      {
+        "restrictionId": 4,
+        "restrictionName": "Dairy-Free",
+        "containsRestriction": true,
+        "notes": "Feta contains dairy, conflicts with dairy-free restriction"
+      }
+    ]
+  },
+  {
+    "_id": 22,
+    "name": "Cilantro",
+    "description": "Fresh cilantro",
+    "cost": 0.45,
+    "inventory": {
+      "quantityStock": 25,
+      "lastUpdate": "2025-07-10T10:00:00Z"
+    },
+    "dietaryInfo": []
+  }
+]

@@ -1,0 +1,53 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: ignite-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-root_pwd}
+      MYSQL_DATABASE: ${DB_NAME:-ignite}
+      TZ: America/Chicago
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ignite-api
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
+    env_file:
+      - .env
+    environment:
+      NODE_ENV: production
+      PORT: ${PORT:-80}
+      PUBLIC_URL: ${PUBLIC_URL:-http://localhost:80}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:80,http://127.0.0.1:80}
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_USER: ${DB_USER:-root}
+      DB_PASSWORD: ${DB_PASSWORD:-root_pwd}
+      DB_NAME: ${DB_NAME:-ignite}
+      DATABASE_URL: mysql://${DB_USER:-root}:${DB_PASSWORD:-root_pwd}@mysql:3306/${DB_NAME:-ignite}?schema=public
+      SESSION_DB_HOST: mysql
+      SESSION_DB_PORT: 3306
+      SESSION_DB_USER: ${SESSION_DB_USER:-${DB_USER:-root}}
+      SESSION_DB_PASSWORD: ${SESSION_DB_PASSWORD:-${DB_PASSWORD:-root_pwd}}
+      SESSION_DB_NAME: ${SESSION_DB_NAME:-${DB_NAME:-ignite}}
+    ports:
+      - "80:80"
+    volumes:
+      - ./uploads:/app/uploads
+
+volumes:
+  mysql_data:

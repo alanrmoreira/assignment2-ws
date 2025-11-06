@@ -1,0 +1,91 @@
+Hey team, so I wanted to give you a video of what the new changes will be here so you can
+get me good estimates and if you have any questions just let me know.
+So Manish, we're starting this from a mobile preview.
+You can ignore this whole section on the web.
+I want you to focus on doing the mobile view and then crafting it for a web view.
+Make it look okay on the web but optimize here and whatever the web looks like will be
+a scaled up version of this.
+So first screen we have a picture.
+Looks like we have some multiple pictures here.
+Let's just stick with one picture for now.
+We got the text, we got a button.
+We have, you know this is your profile, some text, your name, email, password.
+I know we have a lot more criteria on this.
+You can add that in for selecting your file, finding the essence.
+I know we have the iOS menu that comes up.
+Manish, you don't need to worry about that and don't need this extra search section.
+Just have a drawdown with these chips.
+We don't need this resize, just the chips.
+And there will be six main options.
+MMA, Muay Thai, wrestling, BJJ, unboxing.
+We also, we need all these fields.
+We need the name, the email, password and their disciplines.
+Once the click continue, oh before the click continue you have this terms of service and
+privacy apologies to see you just make sure this is here.
+We can come back to this in the future if we want to check box or there might be certain
+aspects of this that are important for a fight form.
+So just the text here is fine.
+I don't even think we have actual links to these yet.
+Okay, click continue.
+Then you go to, please check your email so you'd be sent some sort of code, bring the code
+back.
+If our code is longer than this, make it longer.
+We can resend the code and then we can verify now or just pass by this step.
+Next it'll take us to get paid for your fight life.
+This is when you choose your topmost tier.
+Remember our tiers are stacked.
+So if you're one, two, three, what you get in one is in two, what you get in two is in
+three.
+You pick whichever one you want to commit to and then the next, you'll notice that this
+is scrollable.
+In the prototype you can see all of the options.
+Notice we select a tier, have to select at least one tier.
+You can only select one tier, but you have to select a tier before you can continue.
+Next you'll be allowed to enable tipping.
+If somebody goes to your post and you have tipping enabled and you also have your payment
+set up, then they can tip you.
+If you decide to ignore this or you don't have tipping the first time, then this can
+be done in your settings later on.
+So factor that in, that there will be another way to change this later.
+For accepting payments, this is a section where you can't go stripe.
+Click this button, it opens the sandbox to do the connection and then that should take
+you back to this screen.
+And this screen is going to be different.
+Jennifer doesn't have the updated version here yet, but what you're going to change
+this to is instead of upload minimum content, get started or tell us about you or give
+us a little information about you.
+I'll figure out the wording for you guys, but the wording isn't that big of a deal
+here for the estimates.
+Essentially, we want to have them upload a profile photo in this section.
+So upload a profile photo for yourself required optional upload a video with a caption and
+that will be their first post.
+But not everyone is going to want to do a video.
+So for now, we're just going to stick with the profile photos mandatory.
+Following this, you have a slide that's arena ready.
+It's just telling you, you know, you'll be able to become arena ready and gives you a sneak
+peek to what that means.
+And what is currently done when we change this title, we can change this line as well.
+And then preview my profile.
+It'll take you just have this as the callback button.
+Preview my profile, take you straight to your profile.
+And you won't be able to officially be seen until you verify your account.
+So we'll want to have some sort of banner to say you need to verify to make sure they
+know.
+And that's the gist of this onboarding.
+So very simple first screen.
+Add your name, email password, your disciplines, verify.
+If you don't want to verify, you can do it later.
+Get paid.
+So which subscription you're committing to tipping or no tipping stripe profile photo
+video if you're feeling extra pumped up and you have something available.
+And then seeing your, you know, your checklist that we can do arena ready and then go into
+your profile.
+So that is the flow.
+So we know if you guys have any questions, please submit your estimates for this.
+I will compile them all together, show them to the client.
+We can see what they think.
+They want this done.
+So I expect this will get thrown in right away.
+We'll likely take priority over some other features.
+So please take a look at this ASAP and let me know.
+Thank you guys.
